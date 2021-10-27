@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <title>KHUONG DUY'S TOYS STORE</title>
+</head>
+
+<body>
+    <div class="main">
+        <h1> TOYS STORE</h1>
+        <div class="d-flex">
+            <form action="/insert" method="post">
+                <div class="nav-bar">
+                    <h2>Enter your toy needs: </h2>
+                    <div>
+                        <label class="form-label" for="txtName">Product Name</label>
+                        <input type="text" class="form-control" name="txtName" id="txtName">
+                    </div>
+                    <div>
+                        <label class="form-label" for="txtPrice">Price</label>
+                        <input type="text" class="form-control" name="txtPrice" id="txtPrice">
+                    </div>
+                    <div>
+                        <label class="form-label" for="txtURL">Picture</label>
+                        <input type="text" class="form-control" name="txtURL" id="txtURL">
+                        <span style="color: red;">{{picError}}</span>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Insert">
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row row-cols-1 row-cols-md-5 g-6">
+        {{#each products}}
+        <div class="col">
+            <div class="card h-100" style="width: 18rem;">
+                <img src="{{picURL}}" class="card-img-top image">
+                <div class="card-body">
+                    <h5 class="card-title">Id : {{_id}}</a></h5>
+                    <p class="card-text product-name">Product's name : {{name}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item price">Price : {{price}} $</li>
+                </ul>
+                <div class="card-body">
+                    <a href="/edit/{{_id}}">Edit</a>
+                    <hr>
+                    <a onclick=" return confirm('Are you sure?')" href="/delete/{{_id}}">Delete</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+        <style>
+            .main {
+                background-image: url(https://i.pinimg.com/736x/60/0d/ac/600dac5975efc33bb11384bd701b4ccf.jpg);
+            }
+            h1 {
+                color: red;
+                text-align: center;
+                 text-shadow: 2px 2px 8px #FF0000;
+            }
+
+            h2 {
+                font-size: 16px !important;
+            }
+
+            .nav-bar {
+                margin-left: 5%;
+            }
+
+            .btn {
+                margin-top: 5px;
+            }
+
+            .image {
+                width: 200px;
+                height: 200px;
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .price,
+            .product-name {
+                font-weight: bold;
+            }
+            label,h2 {
+                color: #fff;
+                font-weight: bold;
+                font-size: 20px;
+                text-shadow: 2px 2px 8px #000;
+            }
+        </style>
+
+</body>
+
+</html>
